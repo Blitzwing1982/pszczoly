@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Pszczoły
 {
-    public class Queen
+    public class Queen : Bee
     {
         public Queen(Worker[] workers)
+            :base(275)
         {
             this.workers = workers;
         }

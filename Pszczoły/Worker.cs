@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Pszczoły
 {
-    public class Worker
+    public class Worker : Bee
     {
-        public Worker(string[] jobsICanDo)
+        public Worker(string[] jobsICanDo, int weight)
+            :base(weight)
         {
             this.jobsICanDo = jobsICanDo; 
         }
-        public int ShiftsLeft
+        public override int ShiftsLeft
         {
             get
             {
