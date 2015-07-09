@@ -31,6 +31,12 @@ namespace Pszczoły
 
         public string WorkTheNextShift()
         {
+            double totalConsumption = 0;
+            for (int i = 0; i <workers.Length; i++)
+            {
+                totalConsumption += workers[i].GetHoneyConsumption();
+                totalConsumption += GetHoneyConsumption();
+            }
             shiftNumber++;
             string report = "Raport zmiany numer" + shiftNumber + "\r\n";
             for (int i = 0; i < workers.Length; i++)
@@ -47,8 +53,34 @@ namespace Pszczoły
                         
             }
 
-
+            report += "Całkowite spożycie miodu: " + totalConsumption + " jednostek";
             return report;
         }
+        public override double GetHoneyConsumption()
+        {
+            double consumption = 0;
+            double largestWorkerConsumption = 0;
+            int workersDoingJobs = 0;
+
+            for (int i = 0; i < workers.Length; i++)
+            {
+                if (workers[i].GetHoneyConsumption() > largestWorkerConsumption)
+                    largestWorkerConsumption = workers[i].GetHoneyConsumption();
+                if (workers[i].ShiftsLeft > 0)
+                    workersDoingJobs++;
+                
+                    
+                
+            }
+            consumption += largestWorkerConsumption;
+            if (workersDoingJobs >= 3)
+                consumption += 30;
+            else
+            {
+                consumption += 20;
+            }
+            return consumption;
+        }
+             
     }
 }
