@@ -28,6 +28,7 @@ namespace Pszczoły
             if (weight > 150)
                 consumption *= 1.35;
             return consumption;
+
         }
     }
 }
